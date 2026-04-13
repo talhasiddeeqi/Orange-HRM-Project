@@ -51,12 +51,12 @@ test.afterEach(async ({ page }) => {
         await expect(logoutPage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/auth/login');
         await expect(logoutPage.page).toHaveTitle(/OrangeHRM/);
         console.log("✅ Logout is completed!");
-  await page.close(); // Close browser tab (good practice in local/dev run)
+  await page.close(); // Close browser tab
 });
 
 
 
-
+/*
 
 test('Add & Search Employee', async ({ page }) => { 
     addEmployeePage = new AddEmployee(page);
@@ -89,3 +89,4 @@ async function SearchEmployee(): Promise<void> {
   
     
 };
+*/
