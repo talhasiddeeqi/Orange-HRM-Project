@@ -11,6 +11,8 @@ export class AddEmployee {
   readonly lastName: Locator;
   readonly ID: Locator;
   readonly saveBtn: Locator;
+  readonly searchIDBox: Locator;
+  readonly searchBtn: Locator;  
 
 
 //Constructor
@@ -24,6 +26,9 @@ export class AddEmployee {
     this.lastName = page.getByPlaceholder('Last Name');
     this.ID = page.locator("div[class='oxd-input-group oxd-input-field-bottom-space'] div input[class='oxd-input oxd-input--active']");
     this.saveBtn = page.getByText('Save');
+    this.searchIDBox = page.locator("//div[@class='oxd-input-group oxd-input-field-bottom-space']//div//input[@class='oxd-input oxd-input--active']");
+    this.searchBtn = page.getByText('Search');
+    
 
   } 
 
@@ -41,4 +46,9 @@ export class AddEmployee {
 
 
   } 
+
+  async searchEmp(empName: string) {
+    await this.searchIDBox.fill(empName);
+    await this.searchBtn.click();
+  }
 }  

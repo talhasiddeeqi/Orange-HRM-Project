@@ -1,0 +1,3 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: GPKXTPsHg First Name: Dock Middle Name: Xena Last Name: Huels
+✅ Logout is completed!

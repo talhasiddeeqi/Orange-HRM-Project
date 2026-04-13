@@ -1,25 +1,39 @@
-import { test, expect } from '@playwright/test'; 
-import { LoginPage } from '../Pages/LoginPage'; 
-import { AddEmployee } from '../Pages/AddEmployeePage';
+
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../Pages/LoginPage';
 import { TestConfig } from '../test.config';
-import { RandomDataUtil } from '../utils/randomDataGenerator';
+
+let config: TestConfig;
+let loginPage: LoginPage;
 
 
+// This hook runs before each test
+test.beforeEach(async ({ page }) => {
+  config = new TestConfig(); // Load config (URL, credentials)
+  await page.goto(config.appUrl); // Navigate to base URL
 
-  
-test('Login with valid credentials and Add Employee', async ({ page }) => { 
-  const config = new TestConfig();
-  const loginPage = new LoginPage(page); 
-  const addEmployee = new AddEmployee(page); 
-  await loginPage.goto(); 
-  await expect(page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'); 
-  await loginPage.login(config.username, config.password); 
-  await expect(page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index'); 
-  await addEmployee.addEmp(RandomDataUtil.getFirstName(), RandomDataUtil.getMiddleName(), RandomDataUtil.getlastName(),RandomDataUtil.getRandomAlphanumeric());
+  // Initialize page objects
+  loginPage = new LoginPage(page);
+});
 
+// Optional cleanup after each test
+test.afterEach(async ({ page }) => {
+  await page.close(); // Close browser tab 
+});
+
+
+test('User login test @master @sanity @regression',async()=>{
+
+    //Enter valid credentials and log in
+    await loginPage.login(config.username, config.password);
     
-  
-  //await expect(page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/238'); 
 
-}); 
+     //Verify successful login by checking URL or page title
+    await expect(loginPage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/dashboard/index');
+    await expect(loginPage.page).toHaveTitle(/OrangeHRM/);
 
+
+
+}
+
+)

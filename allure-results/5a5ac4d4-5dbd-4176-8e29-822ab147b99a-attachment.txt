@@ -1,0 +1,2 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: p7GfLclf3 First Name: Preston Middle Name: Morgan Last Name: Emard

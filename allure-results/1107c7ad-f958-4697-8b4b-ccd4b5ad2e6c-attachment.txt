@@ -1,0 +1,3 @@
+✅ Login is completed!
+✅ Employee is searched successfully! 
+✅ Employee is added successfully! with Employee ID: l1RDJh40G First Name: Mozelle Middle Name: Julien Last Name: Auer

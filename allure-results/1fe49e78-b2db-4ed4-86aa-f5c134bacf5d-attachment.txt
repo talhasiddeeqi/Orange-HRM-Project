@@ -1,0 +1,2 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: Qyaz85I9n First Name: Francisco Middle Name: Blake Last Name: King

@@ -1,0 +1,3 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: cVy1N6QUw First Name: Terrell Middle Name: Lynn Last Name: Cruickshank
+✅ Employee is searched successfully! 

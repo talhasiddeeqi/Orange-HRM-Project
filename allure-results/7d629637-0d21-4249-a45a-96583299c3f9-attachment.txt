@@ -1,0 +1,3 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: fjB0DeSZ8 First Name: Johnathan Middle Name: Brooklyn Last Name: Stokes
+✅ Employee is searched successfully! 
