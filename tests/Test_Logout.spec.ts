@@ -33,7 +33,7 @@ test('User login test @master @sanity @regression',async({ page })=>{
     // Step 1: Register a new account and capture the generated email
     await performLogin(config.username, config.password);
     console.log("✅ Login is completed!");
-    page.waitForTimeout(2000); //Wait for 2 seconds to observe the login process
+    //page.waitForTimeout(2000); //Wait for 2 seconds to observe the login process
 
     // Step 2: Logout from the account
     await performLogout();
