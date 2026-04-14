@@ -23,12 +23,12 @@ export class HomePage {
         this.page = page;
         
         // Initialize locators
-        this.lnkAdmin = page.locator('a:has-text("Admin")');
-        this.lnkPIM = page.locator('a:has-text("PIM")');
-        this.lnkLeave = page.locator('a:has-text("Leave")');
-        this.lnkTime = page.locator('a:has-text("Time")');
-        this.lnkRecruitment = page.locator('a:has-text("Recruitment")');
-        this.lnkMyInfo = page.locator('a:has-text("My Info")');
+        this.lnkAdmin = page.locator(':text-is("Admin")');
+        this.lnkPIM = page.locator(':text-is("PIM")');
+        this.lnkLeave = page.locator(':text-is("Leave")');
+        this.lnkTime = page.locator(':text-is("Time")');
+        this.lnkRecruitment = page.locator(':text-is("Recruitment")');
+        this.lnkMyInfo = page.locator(':text-is("My Info")');
         this.lnkPerformance = page.locator('a:has-text("Performance")');
         this.lnkDashboard = page.locator('a:has-text("Dashboard")');
         this.lnkDirectory = page.locator('a:has-text("Directory")');
