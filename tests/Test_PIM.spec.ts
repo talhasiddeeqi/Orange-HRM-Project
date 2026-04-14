@@ -12,13 +12,6 @@ let loginPage: LoginPage;
 let logoutPage: LogoutPage;
 let homePage: HomePage;
 let addEmployeePage: AddEmployee;
-     let First_name = RandomDataUtil.getFirstName();
-     let Middle_name = RandomDataUtil.getMiddleName();
-     let Last_name = RandomDataUtil.getlastName();
-     let Employee_Id = RandomDataUtil.getRandomAlphanumeric();
-
-
-
 
 
 // This hook runs before each test
@@ -51,42 +44,29 @@ test.afterEach(async ({ page }) => {
         await expect(logoutPage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/auth/login');
         await expect(logoutPage.page).toHaveTitle(/OrangeHRM/);
         console.log("✅ Logout is completed!");
-  await page.close(); // Close browser tab
+  //await page.close(); // Close browser tab 
 });
 
 
-
-/*
-
-test('Add & Search Employee', async ({ page }) => { 
-    addEmployeePage = new AddEmployee(page);
+test('PIMTest',async({page})=>{
     homePage = new HomePage(page);
-    
-    addEmployee(); 
-
-   SearchEmployee(); // Call the function to search for the employee
-
-}); 
-
+    addEmployeePage = new AddEmployee(page);
+    let First_name = RandomDataUtil.getFirstName();
+    let Middle_name = RandomDataUtil.getMiddleName();
+    let Last_name = RandomDataUtil.getlastName();
+    let Employee_Id = RandomDataUtil.getRandomAlphanumeric();
 
 
-
-
-
-
-async function addEmployee(): Promise<void> {
-     homePage.clickPIM();
-     await addEmployeePage.addEmp(First_name, Middle_name, Last_name, Employee_Id);
+    await addEmployeePage.addEmp(First_name, Middle_name, Last_name, Employee_Id);
      console.log("✅ Employee is added successfully! with Employee ID: " + Employee_Id + " First Name: " + First_name + " Middle Name: " + Middle_name + " Last Name: " + Last_name);
- 
     
-};
-
-async function SearchEmployee(): Promise<void> {
-    homePage.clickPIM();
+    //await page.waitForTimeout(2000); //Wait for 2 seconds to observe the employee addition process
+    await homePage.clickDashboard();
+    await homePage.clickPIM();
     await addEmployeePage.searchEmp(Employee_Id);
     console.log("✅ Employee is searched successfully! ");
-  
-    
-};
-*/
+
+
+
+}
+);

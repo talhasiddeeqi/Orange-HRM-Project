@@ -1,0 +1,3 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: 2i7xtKqEC First Name: Amy Middle Name: Greer Last Name: Von
+✅ Logout is completed!

@@ -1,0 +1,125 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Test_HomePage.spec.ts >> HomePage Buttons
+- Location: tests\Test_HomePage.spec.ts:48:5
+
+# Error details
+
+```
+Error: expect(page).toHaveURL(expected) failed
+
+Expected: "https://opensource-demo.orangehrmlive.com/web/claim/viewClaims"
+Received: "https://opensource-demo.orangehrmlive.com/web/claim/viewAssignClaim"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 5000ms
+    9 × unexpected value "https://opensource-demo.orangehrmlive.com/web/claim/viewAssignClaim"
+
+```
+
+# Test source
+
+```ts
+  1  | 
+  2  | import { test, expect } from '@playwright/test';
+  3  | import { HomePage } from '../Pages/HomePage';
+  4  | import { TestConfig } from '../test.config';
+  5  | import { LoginPage } from '../Pages/LoginPage';
+  6  | import { LogoutPage } from '../Pages/LogoutPage';
+  7  | 
+  8  | let homePage: HomePage;
+  9  | let config: TestConfig;
+  10 | let loginPage: LoginPage;
+  11 | let logoutPage: LogoutPage;
+  12 | 
+  13 | 
+  14 | // This hook runs before each test
+  15 | test.beforeEach(async ({ page }) => {
+  16 |   config = new TestConfig(); // Load config (URL, credentials)
+  17 |   await page.goto(config.appUrl); // Navigate to base URL
+  18 | 
+  19 |   // Initialize page objects
+  20 |   loginPage = new LoginPage(page);
+  21 | 
+  22 |       //Enter valid credentials and log in
+  23 |     await loginPage.login(config.username, config.password);
+  24 |     
+  25 | 
+  26 |      //Verify successful login by checking URL or page title
+  27 |     await expect(loginPage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/dashboard/index');
+  28 |     await expect(loginPage.page).toHaveTitle(/OrangeHRM/);
+  29 | 
+  30 |     console.log("✅ Login is completed!");
+  31 | 
+  32 | 
+  33 | 
+  34 | });
+  35 | 
+  36 | // Optional cleanup after each test
+  37 | test.afterEach(async ({ page }) => {
+  38 |       logoutPage = new LogoutPage(page);
+  39 |             await logoutPage.Logout();
+  40 |          //Verify successful logout by checking URL or page title
+  41 |         await expect(logoutPage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/auth/login');
+  42 |         await expect(logoutPage.page).toHaveTitle(/OrangeHRM/);
+  43 |         console.log("✅ Logout is completed!");
+  44 |   await page.close(); // Close browser tab 
+  45 | });
+  46 | 
+  47 | 
+  48 | test('HomePage Buttons',async({page})=>{
+  49 | homePage = new HomePage(page);
+  50 |     //Enter valid credentials and log in
+  51 |     await homePage.clickAdmin();
+  52 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/admin/viewSystemUsers');
+  53 | 
+  54 |     await homePage.clickPIM();
+  55 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/pim/viewEmployeeList');
+  56 | 
+  57 |     await homePage.clickLeave();
+  58 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/leave/viewLeaveList');
+  59 | 
+  60 |     await homePage.clickTime();
+  61 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/time/viewEmployeeTimesheet');
+  62 | 
+  63 |     await homePage.clickRecruitment();
+  64 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/recruitment/viewCandidates');
+  65 | 
+  66 |     await homePage.clickMyInfo();
+  67 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/pim/viewPersonalDetails/empNumber/7');
+  68 | 
+  69 |     await homePage.clickPerformance();
+  70 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/performance/searchEvaluatePerformanceReview');
+  71 | 
+  72 |     await homePage.clickDashboard();
+  73 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/dashboard/index');
+  74 | 
+  75 |     await homePage.clickDirectory();
+  76 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/directory/viewDirectory');
+  77 | 
+  78 |     await homePage.clickMaintenance();
+  79 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/maintenance/purgeEmployee');
+  80 |            
+  81 |     await homePage.clickClaim();
+> 82 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/claim/viewClaims');
+     |                                    ^ Error: expect(page).toHaveURL(expected) failed
+  83 | 
+  84 |     await homePage.clickBuzz();
+  85 |        await expect(homePage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/buzz/viewBuzz');
+  86 | 
+  87 | 
+  88 | 
+  89 | 
+  90 | 
+  91 | }
+  92 | 
+  93 | )
+  94 | 
+```

@@ -1,0 +1,4 @@
+Exception occurred while clicking 'Admin': Error: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator(':text-is("Admin")')
+

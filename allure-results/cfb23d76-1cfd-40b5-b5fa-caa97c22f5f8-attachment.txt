@@ -1,0 +1,2 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: ersYzQYd1 First Name: Reginald Middle Name: Buddy Last Name: Weber

@@ -44,7 +44,7 @@ test.afterEach(async ({ page }) => {
         await expect(logoutPage.page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/auth/login');
         await expect(logoutPage.page).toHaveTitle(/OrangeHRM/);
         console.log("✅ Logout is completed!");
-  await page.close(); // Close browser tab 
+  //await page.close(); // Close browser tab 
 });
 
 
@@ -58,9 +58,11 @@ test('EndtoEnd Test',async({page})=>{
 
 
     await addEmployeePage.addEmp(First_name, Middle_name, Last_name, Employee_Id);
-    console.log("✅ Employee is added successfully! with Employee ID: " + Employee_Id + " First Name: " + First_name + " Middle Name: " + Middle_name + " Last Name: " + Last_name);
-
-    homePage.clickPIM();
+     console.log("✅ Employee is added successfully! with Employee ID: " + Employee_Id + " First Name: " + First_name + " Middle Name: " + Middle_name + " Last Name: " + Last_name);
+    
+    //await page.waitForTimeout(2000); //Wait for 2 seconds to observe the employee addition process
+    await homePage.clickDashboard();
+    await homePage.clickPIM();
     await addEmployeePage.searchEmp(Employee_Id);
     console.log("✅ Employee is searched successfully! ");
 

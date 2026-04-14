@@ -1,0 +1,4 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: 9oOsRmWOC First Name: Jaleel Middle Name: Carter Last Name: Mosciski
+✅ Employee is searched successfully! 
+✅ Logout is completed!

@@ -1,0 +1,10 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: UsN2kBCJj First Name: Emery Middle Name: Kyle Last Name: Pfannerstill
+Exception occurred while clicking 'PIM': Error: locator.click: Error: strict mode violation: locator(':text-is("PIM")') resolved to 2 elements:
+    1) <span data-v-7b563373="" data-v-6475d26d="" class="oxd-text oxd-text--span oxd-main-menu-item--name">PIM</span> aka getByRole('link', { name: 'PIM' })
+    2) <h6 data-v-7b563373="" data-v-c286b6e5="" class="oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module">PIM</h6> aka getByRole('heading', { name: 'PIM' })
+
+Call log:
+  - waiting for locator(':text-is("PIM")')
+
+✅ Logout is completed!

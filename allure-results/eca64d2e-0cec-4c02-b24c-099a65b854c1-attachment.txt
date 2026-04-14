@@ -1,0 +1,3 @@
+✅ Login is completed!
+✅ Employee is added successfully! with Employee ID: xz4Yrusvb First Name: Ladarius Middle Name: Charles Last Name: Lubowitz
+✅ Logout is completed!
