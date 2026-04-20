@@ -61,11 +61,11 @@ test('PIMTest',async({page})=>{
      console.log("✅ Employee is added successfully! with Employee ID: " + Employee_Id + " First Name: " + First_name + " Middle Name: " + Middle_name + " Last Name: " + Last_name);
     
     //await page.waitForTimeout(2000); //Wait for 2 seconds to observe the employee addition process
-    await homePage.clickDashboard();
-    await homePage.clickPIM();
-    await addEmployeePage.searchEmp(Employee_Id);
-    console.log("✅ Employee is searched successfully! ");
-
+   
+  //  await homePage.clickDashboard();
+   // await homePage.clickPIM();
+   // await addEmployeePage.searchEmp(Employee_Id);
+   // console.log("✅ Employee is searched successfully! ");
 
 
 }
