@@ -1,0 +1,4 @@
+✅ Login is completed!
+File uploaded successfully
+✅ Employee is added successfully! with Employee ID: SuFuiolx9 First Name: Jarrell Middle Name: Ocean Last Name: Torphy
+✅ Logout is completed!

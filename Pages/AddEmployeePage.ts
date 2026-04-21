@@ -1,5 +1,6 @@
 
 
+import { th } from '@faker-js/faker';
 import { Page, Locator } from '@playwright/test'; 
 export class AddEmployee { 
 //Variable Declaration
@@ -49,18 +50,18 @@ export class AddEmployee {
 
     this.DLNum = page.getByRole('textbox').nth(7);
     this.LiscenceExpDate = page.getByRole('textbox', { name: 'yyyy-dd-mm' }).first();
-    this.nationality = page.locator('div').filter({ hasText: '-- Select --' }).nth(0);
-    this.maritalStatus = page.locator('div').filter({ hasText: '-- Select --' }).nth(1);
+    this.nationality = page.locator(':text("-- Select --")').nth(0);
+    this.maritalStatus = page.locator(':text("-- Select --")').first();
     this.DOB = page.getByRole('textbox', { name: 'yyyy-dd-mm' }).last();
-    this.genderM = page.getByLabel('Male');
+    this.genderM = page.getByText('Female');
     this.genderF = page.getByLabel('Female');
     this.save1Btn = page.getByRole('button', { name: 'Save' }).nth(0);
 
-    this.bloodType = page.locator('div').filter({ hasText: '-- Select --' }).nth(2);
+    this.bloodType = page.locator(':text("-- Select --")').last();
     this.save2Btn = page.getByRole('button', { name: 'Save' }).nth(1);
 
     this.attachmentBtn = page.locator('i.oxd-icon.bi-plus.oxd-button-icon');
-    this.fileUploadInput = page.getByText('Browse');
+    this.fileUploadInput = page.locator('input[type="file"]');
     this.commentInput = page.getByRole('textbox', { name: 'Type comment here' });
     this.save3Btn = page.getByRole('button', { name: 'Save' }).nth(2);
 
@@ -82,28 +83,32 @@ export class AddEmployee {
 
     await this.page.waitForTimeout(5000); // Wait for 5 seconds to ensure the employee is added before searching
 
-    this.DLNum.fill('DL123456');
-    this.LiscenceExpDate.fill('31-12-2026');
-    this.nationality.click();
-    await this.page.getByRole('option', { name: 'Indian' }).click();
-    this.maritalStatus.click();
-    await this.page.getByRole('option', { name: 'Single' }).click();
-    this.DOB.fill('10-10-2000');
-    this.genderM.check();
-    this.save1Btn.click();  
+    //this.DLNum.fill('DL123456');
+    //this.LiscenceExpDate.click();
+    await this.LiscenceExpDate.fill('2026-15-12');
+    await this.page.waitForTimeout(2000); // Wait for 2 seconds before selecting
+    await this.nationality.click();
+    await this.page.getByText('Djibouti').click();
+    await this.maritalStatus.click();
+    await this.page.getByText('Single').click();
+    //await this.DOB.click();
+    await this.DOB.fill('2000-10-10');
+    await this.genderM.click();
+    await this.save1Btn.click();  
 
-    this.bloodType.click();
+    await this.bloodType.click();
     await this.page.getByRole('option', { name: 'O+' }).click();
-    this.save2Btn.click();  
+    await this.save2Btn.click();  
       
-    this.attachmentBtn.click();
-    await this.fileUploadInput.setInputFiles('utils/attachmentFile.jpg');  
+    await this.attachmentBtn.click();
+    await this.page.waitForTimeout(2000); // Wait for 2 seconds before uploading the file
+    await this.fileUploadInput.setInputFiles('utils/attachment.png');  
     await this.commentInput.fill('Picture has been uploaded');
     await console.log('File uploaded successfully');
     await this.save3Btn.click();
 
+    }
 
-  } 
 
   async searchEmp(empName: string) {
     await this.searchIDBox.fill(empName);
